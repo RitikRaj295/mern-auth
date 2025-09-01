@@ -13,7 +13,7 @@ const CreateUserTable =  async()=>{
        VerifyOtpExpireAt Bigint Default '0',
        isAccountVerified Boolean Default 'false',
        ResetOtp Text Default '',
-       ResetOtpExpireAt Integer Default '0'
+       ResetOtpExpireAt Bigint Default '0'
 
 
     );
