@@ -20,7 +20,9 @@ CreateUserTable();
 // console.log("🔑 Password type:", typeof process.env.PASSWORD); // should be string
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({origin:["http://192.168.31.216:5173","http://localhost:5173"],credentials:true}))
+// app.use(cors({origin:["http://192.168.31.216:5173","http://localhost:5173"],credentials:true}))
+app.use(cors({origin:process.env.FRONTEND_URL,credentials:true}))
+
 
 
 app.get("/",(req,res)=>{  res.send("API Working");  })
