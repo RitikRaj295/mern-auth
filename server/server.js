@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser';
-import { config } from 'dotenv';
+import 'dotenv/config'
 import connectDb from './config/postgres.js'
 import CreateUserTable from './model/usermodel.js';
 import authRouter from "./Routes/authRoutes.js"
@@ -12,7 +12,7 @@ import userRouter from './Routes/userRoutes.js';
 
 
 const app=express();
-const port=4000;
+const port=process.env.PORT || 4000;
 
 CreateUserTable();
 
