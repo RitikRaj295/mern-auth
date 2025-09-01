@@ -16,13 +16,15 @@ const port=process.env.PORT || 4000;
 
 CreateUserTable();
 
+const allowedOrigins = (process.env.FRONTEND_URLS || "").split(",");
 
-// console.log("🔑 Password type:", typeof process.env.PASSWORD); // should be string
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true
+}));
+
 app.use(express.json());
 app.use(cookieParser());
-// app.use(cors({origin:["http://192.168.31.216:5173","http://localhost:5173","https://mern-auth-frontend-l76j.onrender.com"],credentials:true}))
-app.use(cors({origin:process.env.FRONTEND_URL,credentials:true}))
-
 
 
 app.get("/",(req,res)=>{  res.send("API Working");  })
