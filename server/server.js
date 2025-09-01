@@ -2,7 +2,6 @@ import express from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser';
 import 'dotenv/config'
-import connectDb from './config/postgres.js'
 import CreateUserTable from './model/usermodel.js';
 import authRouter from "./Routes/authRoutes.js"
 import userRouter from './Routes/userRoutes.js';
