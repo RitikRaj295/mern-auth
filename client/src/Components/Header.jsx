@@ -1,16 +1,17 @@
 import assets from '../assets/assets'
-import { useSelector } from 'react-redux'
+import { useSelector ,useDispatch} from 'react-redux';
+import { setToggle } from '../Slice/authSlice';
 
 const Header = () => {
 
   const {userData}= useSelector((state)=> state.auth)
-
+  const dispatch =  useDispatch();
 
  
   
   return (
    
-  <div className='h-[88vh] w-full  '>
+  <div className='h-[88vh] w-full  ' onClick={()=>dispatch(setToggle('hidden'))}>
       <div className='h-full w-[70%] sm  flex flex-col gap-2 justify-center items-center  m-auto text-center'>
         <img src={assets.header_img} alt="image" className='w-[20vh] aspect-square animate-bounce duration-1000 rounded-full'/>
         <h2 className='text-xl flex flex-inline  '>Hey {userData?.name || "Developer"}<img src={assets.hand_wave} className=' ml-1 w-6 aspect-square ' alt="" /></h2>

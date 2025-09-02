@@ -1,14 +1,18 @@
 import assets from "../assets/assets.js";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { setIsLoggedIn, clearUserData, setLoading } from "../Slice/authSlice.js";
+import { setIsLoggedIn, clearUserData, setLoading , setToggle} from "../Slice/authSlice.js";
 import axios from "axios";
 import { toast } from "react-toastify";
 
+
 const Navbar = () => {
+  
+  
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isLoggedIn, userData, backendUrl, loading } = useSelector(
+  const { isLoggedIn, userData, backendUrl, loading ,toggle} = useSelector(
     (state) => state.auth
   );
 
@@ -53,7 +57,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="h-[12vh] w-screen m-auto flex justify-center items-center shadow-lg">
+    <div  className="h-[12vh] w-screen m-auto flex justify-center items-center shadow-lg">
       <div className="container h-full w-[90vw] flex justify-between items-center">
         <img
           src={assets.logo}
@@ -61,10 +65,12 @@ const Navbar = () => {
           className="w-24 h-24 transition-transform transform-3d"
         />
         {userData ? (
-          <div className="border flex justify-center items-center h-10 w-10 rounded-full bg-blue-900 text-white text-xl border-black relative group">
+          <div  onClick={()=>dispatch(setToggle('block'))} className="border flex justify-center items-center h-10 w-10  rounded-full bg-blue-900 text-white text-xl border-black relative group">
+          
             {userData.name[0].toUpperCase()}
-            <div className="absolute pt-10 top-0 z-10 right-5 text-black hidden group-hover:block cursor-pointer text-sm">
-              <ul className="list-none m-0 px-1 text-gray-800 bg-gray-300 rounded-xl flex flex-col p-2">
+            <div  className={`absolute pt-10 top-0 z-10 right-5 text-black ${toggle} group-hover:block  cursor-pointer text-sm`}>
+              <ul  className="list-none m-0 px-1 text-gray-800 bg-gray-300 rounded-xl flex flex-col p-2">
+                
                 {!userData.isAccountVerified && (
                   <li
                     onClick={!loading ? sendVerifyOtp : undefined}

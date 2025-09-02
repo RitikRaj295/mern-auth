@@ -7,6 +7,7 @@ const initialState = {
   backendUrl: import.meta.env.VITE_BACKEND_URL,
   isLoggedIn: false,
   loading:false,
+  toggle:'hidden',
   userData:null,
  
 };
@@ -65,6 +66,9 @@ const authReducer = createSlice({
     },
      clearUserData: (state) => {  
       state.userData = null;
+    },
+    setToggle:(state,action)=>{
+      state.toggle=action.payload;
     }
   },
 
@@ -88,5 +92,5 @@ const authReducer = createSlice({
 });
 
 
-export const {setIsLoggedIn,clearUserData,setLoading} = authReducer.actions;
+export const {setIsLoggedIn,clearUserData,setLoading, setToggle} = authReducer.actions;
 export default authReducer.reducer;

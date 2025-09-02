@@ -6,7 +6,7 @@ import ResetPassword from './Pages/ResetPassword';
 import Error from './Pages/Error';
 import {ToastContainer} from 'react-toastify';
 import { useEffect } from "react";
-import { getAuthState } from "./Slice/authSlice";
+import { getAuthState} from "./Slice/authSlice";
 import { useDispatch } from "react-redux";
 
 
